@@ -2,9 +2,25 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Requirements
+
+### Business Requirements Document
+
+https://docs.google.com/document/d/1m7GzB0Rjx_pZDW0cclmrG7cab3uC0HW4_LWA9SXXQMY/edit?usp=sharing
+
+### Interface Mockup Link
+
+https://www.figma.com/file/65fTpfVNWiHBbdg2x3hCZg/Expense-Tracker?node-id=0%3A1
+
+### Class Diagram
+
+https://lucid.app/lucidchart/1ba7a316-ee15-4539-a71f-b5f8cfd055ed/edit?invitationId=inv_8e4b1a10-b15e-4f30-ba78-0991120ed2ce
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
 
 ### `npm start`
 
