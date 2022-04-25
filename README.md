@@ -16,6 +16,12 @@ https://www.figma.com/file/65fTpfVNWiHBbdg2x3hCZg/Expense-Tracker?node-id=0%3A1
 
 https://lucid.app/lucidchart/1ba7a316-ee15-4539-a71f-b5f8cfd055ed/edit?invitationId=inv_8e4b1a10-b15e-4f30-ba78-0991120ed2ce
 
+### JSDOC links
+
+http://127.0.0.1:5500/src/out/index.html
+
+http://127.0.0.1:5500/src/components/out/index.html
+
 ## Available Scripts
 
 In the project directory, you can run:

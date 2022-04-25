@@ -10,10 +10,15 @@ import { AddTransaction } from "./components/AddTransaction";
 import PieChart from "./components/PieChart";
 import { GlobalProvider, GlobalContext } from "./context/State";
 
+/**
+ * main function for the progeam
+ * @returns null
+ */
+
 function App() {
 	const { transaction } = useContext(GlobalContext);
 
-	const [incomeData, setIncomeData] = useState({
+	const incomeChartData = {
 		labels: transaction
 			.filter((transaction) => transaction.amount >= 0)
 			.map((transaction) => transaction.text),
@@ -34,9 +39,9 @@ function App() {
 				],
 			},
 		],
-	});
+	};
 
-	const [expenseData, setExpenseData] = useState({
+	const expenseChartData = {
 		labels: transaction
 			.filter((transaction) => transaction.amount < 0)
 			.map((transaction) => transaction.text),
@@ -57,7 +62,7 @@ function App() {
 				],
 			},
 		],
-	});
+	};
 
 	return (
 		<Container>
@@ -65,19 +70,19 @@ function App() {
 				<GlobalProvider>
 					<Col>
 						<h3 className="text-center">Income</h3>
-						<PieChart chartData={incomeData} />
+						<PieChart chartData={incomeChartData} />
 					</Col>
 					<Col>
 						<h2 className="text-center">Expense Tracker</h2>
 						<Balance />
 						<IncomeExpense />
 						<TransactionList />
-						<AddTransaction />
+						<AddTransaction incomeChartData={incomeChartData} />
 					</Col>
 
 					<Col>
 						<h3 className="text-center">Expense</h3>
-						<PieChart chartData={expenseData} />
+						<PieChart chartData={expenseChartData} />
 					</Col>
 				</GlobalProvider>
 			</Row>

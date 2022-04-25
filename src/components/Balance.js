@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/State";
 
+/**
+ * calculate the balance
+ * @returns null
+ */
 export const Balance = () => {
 	const { transaction } = useContext(GlobalContext);
 
