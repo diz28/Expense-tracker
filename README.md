@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Project Requirements
 
+### Deployment Link
+
+https://main--genuine-boba-7d15cb.netlify.app/
+
 ### Business Requirements Document
 
 https://docs.google.com/document/d/1m7GzB0Rjx_pZDW0cclmrG7cab3uC0HW4_LWA9SXXQMY/edit?usp=sharing
