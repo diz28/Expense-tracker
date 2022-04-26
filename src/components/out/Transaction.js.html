@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Balance.js</title>
+    <title>JSDoc: Source: Transaction.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Balance.js</h1>
+    <h1 class="page-title">Source: Transaction.js</h1>
 
     
 
@@ -30,20 +30,27 @@
 import { GlobalContext } from "../context/State";
 
 /**
- * calculate the balance
- * @returns null
+ *
+ * @param {*} param0 transaction array
+ * @returns delete button and calculate the amount after delete
  */
-export const Balance = () => {
-	const { transaction } = useContext(GlobalContext);
+export const Transaction = ({ transaction }) => {
+	const { deleteTransaction } = useContext(GlobalContext);
 
-	const amount = transaction.map((transaction) => transaction.amount);
-	const total = amount.reduce((acc, item) => (acc += item), 0).toFixed(2);
-
+	const sign = transaction.amount &lt; 0 ? "-" : "+";
 	return (
-		&lt;>
-			&lt;h4>BALANCE&lt;/h4>
-			&lt;h1>${total}&lt;/h1>
-		&lt;/>
+		&lt;li className={transaction.amount &lt; 0 ? "minus" : "plus"}>
+			{transaction.text}
+			&lt;span>
+				{sign}${Math.abs(transaction.amount)}
+			&lt;/span>
+			&lt;button
+				onClick={() => deleteTransaction(transaction.id)}
+				className="delete-btn"
+			>
+				X
+			&lt;/button>
+		&lt;/li>
 	);
 };
 </code></pre>

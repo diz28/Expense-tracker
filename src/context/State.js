@@ -32,6 +32,20 @@ export const GlobalProvider = ({ children }) => {
 		});
 	}
 
+	React.useEffect(() => {
+		const data = localStorage.getItem("transaction-list");
+		if (data) {
+			initialState.transaction = JSON.parse(data);
+		}
+	}, []);
+
+	React.useEffect(() => {
+		localStorage.setItem(
+			"transaction-list",
+			JSON.stringify(state.transaction)
+		);
+	});
+
 	return (
 		<GlobalContext.Provider
 			value={{

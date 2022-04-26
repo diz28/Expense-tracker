@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Balance.js</title>
+    <title>JSDoc: Source: TransactionList.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Balance.js</h1>
+    <h1 class="page-title">Source: TransactionList.js</h1>
 
     
 
@@ -28,21 +28,26 @@
         <article>
             <pre class="prettyprint source linenums"><code>import React, { useContext } from "react";
 import { GlobalContext } from "../context/State";
+import { Transaction } from "./Transaction";
 
 /**
- * calculate the balance
- * @returns null
+ *
+ * @returns the history of transactions
  */
-export const Balance = () => {
+export const TransactionList = () => {
 	const { transaction } = useContext(GlobalContext);
-
-	const amount = transaction.map((transaction) => transaction.amount);
-	const total = amount.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
 	return (
 		&lt;>
-			&lt;h4>BALANCE&lt;/h4>
-			&lt;h1>${total}&lt;/h1>
+			&lt;h3>History&lt;/h3>
+			&lt;ul className="list">
+				{transaction.map((transaction) => (
+					&lt;Transaction
+						key={transaction.id}
+						transaction={transaction}
+					/>
+				))}
+			&lt;/ul>
 		&lt;/>
 	);
 };

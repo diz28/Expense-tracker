@@ -1,6 +1,10 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/State";
 
+/**
+ *
+ * @returns the input boxs for transactions
+ */
 export const AddTransaction = () => {
 	const [text, setText] = useState("");
 	const [amount, setAmount] = useState(0);
@@ -35,7 +39,6 @@ export const AddTransaction = () => {
 				<div className="form-control">
 					<label htmlFor="amount">
 						Amount <br />
-						(negative - expense, positive - income)
 					</label>
 					<input
 						type="number"

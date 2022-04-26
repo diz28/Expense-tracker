@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Balance.js</title>
+    <title>JSDoc: Source: IncomeExpense.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Balance.js</h1>
+    <h1 class="page-title">Source: IncomeExpense.js</h1>
 
     
 
@@ -30,20 +30,34 @@
 import { GlobalContext } from "../context/State";
 
 /**
- * calculate the balance
- * @returns null
+ *
+ * @returns calculate income and expenses
  */
-export const Balance = () => {
+export const IncomeExpense = () => {
 	const { transaction } = useContext(GlobalContext);
 
 	const amount = transaction.map((transaction) => transaction.amount);
-	const total = amount.reduce((acc, item) => (acc += item), 0).toFixed(2);
+	const income = amount
+		.filter((item) => item > 0)
+		.reduce((acc, item) => (acc += item), 0)
+		.toFixed(2);
+	const expense = (
+		amount
+			.filter((item) => item &lt; 0)
+			.reduce((acc, item) => (acc += item), 0) * -1
+	).toFixed(2);
 
 	return (
-		&lt;>
-			&lt;h4>BALANCE&lt;/h4>
-			&lt;h1>${total}&lt;/h1>
-		&lt;/>
+		&lt;div className="inc-exp-container">
+			&lt;div>
+				&lt;h4>Income&lt;/h4>
+				&lt;p className="money plus">{income}&lt;/p>
+			&lt;/div>
+			&lt;div>
+				&lt;h4>Expense&lt;/h4>
+				&lt;p className="money minus">{expense}&lt;/p>
+			&lt;/div>
+		&lt;/div>
 	);
 };
 </code></pre>

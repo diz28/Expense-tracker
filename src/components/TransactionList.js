@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/State";
 import { Transaction } from "./Transaction";
 
+/**
+ *
+ * @returns the history of transactions
+ */
 export const TransactionList = () => {
 	const { transaction } = useContext(GlobalContext);
 

@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/State";
 
+/**
+ *
+ * @returns calculate income and expenses
+ */
 export const IncomeExpense = () => {
 	const { transaction } = useContext(GlobalContext);
 

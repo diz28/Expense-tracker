@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Balance.js</title>
+    <title>JSDoc: Source: IncomePieChart.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Balance.js</h1>
+    <h1 class="page-title">Source: IncomePieChart.js</h1>
 
     
 
@@ -27,25 +27,44 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React, { useContext } from "react";
+import { Pie } from "react-chartjs-2";
+// eslint-disable-next-line no-unused-vars
+import { Chart as ChartJS } from "chart.js/auto";
 import { GlobalContext } from "../context/State";
 
 /**
- * calculate the balance
- * @returns null
+ *
+ * @returns income pie chart
  */
-export const Balance = () => {
+const IncomePieChart = () => {
 	const { transaction } = useContext(GlobalContext);
 
-	const amount = transaction.map((transaction) => transaction.amount);
-	const total = amount.reduce((acc, item) => (acc += item), 0).toFixed(2);
-
-	return (
-		&lt;>
-			&lt;h4>BALANCE&lt;/h4>
-			&lt;h1>${total}&lt;/h1>
-		&lt;/>
-	);
+	const incomeChartData = {
+		labels: transaction
+			.filter((transaction) => transaction.amount >= 0)
+			.map((transaction) => transaction.text),
+		datasets: [
+			{
+				label: "Income",
+				data: transaction
+					.filter((transaction) => transaction.amount >= 0)
+					.map((transaction) => transaction.amount),
+				backgroundColor: [
+					"#9400D3",
+					"#4B0082",
+					"#0000FF",
+					"#00FF00",
+					"#FFFF00",
+					"#FF7F00",
+					"#FF0000",
+				],
+			},
+		],
+	};
+	return &lt;Pie data={incomeChartData} />;
 };
+
+export default IncomePieChart;
 </code></pre>
         </article>
     </section>

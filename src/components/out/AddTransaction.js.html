@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Balance.js</title>
+    <title>JSDoc: Source: AddTransaction.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Balance.js</h1>
+    <h1 class="page-title">Source: AddTransaction.js</h1>
 
     
 
@@ -26,23 +26,57 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useContext } from "react";
+            <pre class="prettyprint source linenums"><code>import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/State";
 
 /**
- * calculate the balance
- * @returns null
+ *
+ * @returns the input boxs for transactions
  */
-export const Balance = () => {
-	const { transaction } = useContext(GlobalContext);
+export const AddTransaction = () => {
+	const [text, setText] = useState("");
+	const [amount, setAmount] = useState(0);
 
-	const amount = transaction.map((transaction) => transaction.amount);
-	const total = amount.reduce((acc, item) => (acc += item), 0).toFixed(2);
+	const { addTransaction } = useContext(GlobalContext);
+
+	const onSubmit = (e) => {
+		e.preventDefault();
+
+		const newTransaction = {
+			id: Math.floor(Math.random() * 10000000),
+			text,
+			amount: +amount,
+		};
+
+		addTransaction(newTransaction);
+	};
 
 	return (
 		&lt;>
-			&lt;h4>BALANCE&lt;/h4>
-			&lt;h1>${total}&lt;/h1>
+			&lt;h4>Add new transaction&lt;/h4>
+			&lt;form onSubmit={onSubmit}>
+				&lt;div className="form-control">
+					&lt;label htmlFor="text">Title&lt;/label>
+					&lt;input
+						type="text"
+						value={text}
+						onChange={(e) => setText(e.target.value)}
+						placeholder="Enter transaction title..."
+					/>
+				&lt;/div>
+				&lt;div className="form-control">
+					&lt;label htmlFor="amount">
+						Amount &lt;br />
+					&lt;/label>
+					&lt;input
+						type="number"
+						value={amount}
+						onChange={(e) => setAmount(e.target.value)}
+						placeholder="Enter amount..."
+					/>
+				&lt;/div>
+				&lt;button className="btn">Add transaction&lt;/button>
+			&lt;/form>
 		&lt;/>
 	);
 };
