@@ -34,9 +34,9 @@ http://127.0.0.1:5500/src/components/out/index.html
 
 In the project directory, you can run:
 
-### `npm install`
+### `yarn install`
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
