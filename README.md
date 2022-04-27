@@ -26,7 +26,9 @@ http://127.0.0.1:5500/src/out/index.html
 
 http://127.0.0.1:5500/src/components/out/index.html
 
-### Run Test `yarn cypress open`
+### Run Test
+
+`yarn cypress open`
 
 ## Available Scripts
 
