@@ -3,6 +3,8 @@ import { GlobalContext } from "../context/State";
 
 /**
  * calculate the balance
+ * @param amount amount for each transaction
+ * @param total calculate the balance of transactions
  * @returns null
  */
 export const Balance = () => {

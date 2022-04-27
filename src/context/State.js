@@ -16,7 +16,15 @@ export const initialState = {
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
-	const [state, dispatch] = useReducer(AppReducer, initialState);
+	const [state, dispatch] = useReducer(AppReducer, initialState, () => {
+		const data = localStorage.getItem("transaction-list");
+		if (data) {
+			initialState.transaction = JSON.parse(data);
+			return initialState;
+		}
+		return initialState;
+	});
+	console.log("state transaction", state.transaction);
 
 	function deleteTransaction(id) {
 		dispatch({
@@ -31,13 +39,6 @@ export const GlobalProvider = ({ children }) => {
 			payload: transaction,
 		});
 	}
-
-	React.useEffect(() => {
-		const data = localStorage.getItem("transaction-list");
-		if (data) {
-			initialState.transaction = JSON.parse(data);
-		}
-	}, []);
 
 	React.useEffect(() => {
 		localStorage.setItem(

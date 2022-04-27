@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/State";
 
 /**
- *
  * @param {*} param0 transaction array
  * @returns delete button and calculate the amount after delete
  */

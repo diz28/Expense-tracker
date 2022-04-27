@@ -3,7 +3,7 @@ import { GlobalContext } from "../context/State";
 import { Transaction } from "./Transaction";
 
 /**
- *
+ * the list of transactions
  * @returns the history of transactions
  */
 export const TransactionList = () => {

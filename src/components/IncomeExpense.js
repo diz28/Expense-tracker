@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/State";
 
 /**
- *
+ * @param transaction array of transactions
  * @returns calculate income and expenses
  */
 export const IncomeExpense = () => {

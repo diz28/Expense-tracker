@@ -5,7 +5,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { GlobalContext } from "../context/State";
 
 /**
- *
+ * show the income pie chart
  * @returns income pie chart
  */
 const IncomePieChart = () => {

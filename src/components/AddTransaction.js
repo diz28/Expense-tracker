@@ -2,7 +2,8 @@ import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/State";
 
 /**
- *
+ * @param text title for each transaction
+ * @param amount the amount for each transaction
  * @returns the input boxs for transactions
  */
 export const AddTransaction = () => {
